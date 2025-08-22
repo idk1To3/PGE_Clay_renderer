@@ -12,12 +12,12 @@
 *.pch
 
 # Build directories
-/Debug/
-/Release/
-/x64/
-/x86/
-/ipch/
-/out/
+Debug/
+Release/
+*/x64/
+x86/
+ipch/
+out/
 
 # Visual Studio cache & user-specific files
 .vs/

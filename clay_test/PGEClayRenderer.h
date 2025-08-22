@@ -154,9 +154,9 @@ public:
 	{
 		olc::Pixel::Mode stashedMode = pge->GetPixelMode();
 
-		bool debug = pge->GetKey(olc::Key::D).bHeld;
+		//bool debug = pge->GetKey(olc::Key::D).bHeld;
 
-		if (debug) std::cout << "\nFRAME:\n";
+		//if (debug) std::cout << "\nFRAME:\n";
 
 		for (int i = 0; i < renderCommands.length; i++) {
 			Clay_RenderCommand *renderCommand = &renderCommands.internalArray[i];
@@ -180,8 +180,7 @@ public:
 					if (c.a == 0) break;
 					float r = renderCommand->renderData.rectangle.cornerRadius.topLeft;
 
-					if (debug)
-						std::cout << "Color: " << (int)c.r << " " << (int)c.g << " " << (int)c.b << " " << (int)c.a << "\n";
+					//if (debug) std::cout << "Color: " << (int)c.r << " " << (int)c.g << " " << (int)c.b << " " << (int)c.a << "\n";
 
 					if(r == 0.0f)
 						pge->FillRect(x,y,w,h,c);
@@ -228,10 +227,7 @@ public:
 					if (rBL < wB) pge->FillRect(x,               y + h - wB,  rBL + 1, wB - rBL - 1, c);
 					if (rTL < wT) pge->FillRect(x,               y + rTL + 1, rTL + 1, wT - rTL - 1, c);
 
-					if (debug)
-					{
-						std::cout << "\tWidths       : (wT, wR, wB, wL) " << wT << " " << wR << " " << wB << " " << wL << "\n";
-					}
+					//if (debug) std::cout << "\tWidths       : (wT, wR, wB, wL) " << wT << " " << wR << " " << wB << " " << wL << "\n";
 
 					break;
 				}
@@ -247,11 +243,11 @@ public:
 					int number = renderCommand->renderData.text.stringContents.length;
 					int spacing = renderCommand->renderData.text.letterSpacing;
 					pge->DrawString(x, y, text.substr(0,number), c, scale, spacing);
-					if (debug)
-					{
-						std::cout << "\tChars: " << renderCommand->renderData.text.stringContents.chars << "\n";
-						std::cout << "\tBase chars length: " << std::string(renderCommand->renderData.text.stringContents.baseChars).length() << "\n";
-					}
+					//if (debug)
+					//{
+					//	std::cout << "\tChars: " << renderCommand->renderData.text.stringContents.chars << "\n";
+					//	std::cout << "\tBase chars length: " << std::string(renderCommand->renderData.text.stringContents.baseChars).length() << "\n";
+					//}
 					break;
 				}
 
@@ -269,11 +265,11 @@ public:
 				case CLAY_RENDER_COMMAND_TYPE_SCISSOR_START:
 				{
 					pge->SetScreenClipRect(x, y, w, h);
-					if (debug)
-					{
-						std::cout << "\tclip horizontal: " << renderCommand->renderData.clip.horizontal << "\n";
-						std::cout << "\tclip vertical: " << renderCommand->renderData.clip.vertical << "\n";
-					}
+					//if (debug)
+					//{
+					//	std::cout << "\tclip horizontal: " << renderCommand->renderData.clip.horizontal << "\n";
+					//	std::cout << "\tclip vertical: " << renderCommand->renderData.clip.vertical << "\n";
+					//}
 					break;
 				}
 
@@ -287,10 +283,10 @@ public:
 					std::cout << "Unhandled render type: " << debugCommandNames[(int)renderCommand->commandType] << "\n";
 			}
 
-			if (debug)
-				std::cout << "\tDid command " << renderCommand->id << " of type " << debugCommandNames[(int)renderCommand->commandType]
-				<< "  (" << x << ", " << y << ") (" << w << ", " << h << ")" 
-				<< "\n\n";
+			//if (debug)
+			//	std::cout << "\tDid command " << renderCommand->id << " of type " << debugCommandNames[(int)renderCommand->commandType]
+			//	<< "  (" << x << ", " << y << ") (" << w << ", " << h << ")" 
+			//	<< "\n\n";
 		}
 
 		pge->SetPixelMode(stashedMode);
